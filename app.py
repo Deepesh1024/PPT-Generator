@@ -593,4 +593,4 @@ if __name__ == '__main__':
     print(f"HF Token: {'✓' if HF_TOKEN else '✗'}")
     print(f"Image Client: {'✓' if client else '✗'}")
     
-    app.run(debug=True, host='0.0.0.0', port=5024)
+    app.run( host='0.0.0.0', port=5000)
