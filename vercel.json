@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/generate-ppt",
+      "dest": "app.py",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/api/status", 
+      "dest": "app.py",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/health",
+      "dest": "app.py",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
+  "functions": {
+    "app.py": {
+      "maxDuration": 300,
+      "memory": 1024
+    }
+  },
+  "env": {
+    "GROQ_API_KEY": "@groq_api_key",
+    "HF_TOKEN": "@hf_token"
+  }
+}
